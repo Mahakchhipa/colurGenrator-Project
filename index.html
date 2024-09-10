@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colourcode Genratore</title>
+    <style>
+     .back_btn{
+        border-radius: 10px;
+      padding: 10px 18px;
+      color:black;
+      margin-left: 25px;
+      font-weight: bold;
+      
+     }
+     .section{
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        padding-top: 200px;
+        
+     }
+     h1{
+        font-size: 50px;
+        color: rgb(218, 197, 82);
+     }
+    
+     
+    </style>
+</head>
+<body>
+    <section class="section">
+        <div>
+            <h1> ~ Mahak Colur Randam Code Genratore ~</h1>
+            <button class="back_btn" id="myButton1">#234f36</button>
+            <button class="back_btn" id="myButton2">#f39836</button>
+        </div>
+        <h2> Copy Your Code From Here </h2>
+        <div class="copycode">
+            background-image:linear-gradient(to right,rgb(92,45,229),rgb(152,63,198));
+        </div>
+    </section> 
+<script>
+    let btn1 = document.getElementById("myButton1");
+    let btn2 = document.getElementById("myButton2");
+    let copyDiv = document.querySelector(".copycode");
+    let rgb1 = "#004773";
+    let rgb2 = "#54d542";
+   
+const hexvalue = () =>{
+    let myHexDecimal ="0123456789abcdef";
+        let colors = "#";
+        for (let i=0; i<6; i++) {
+            colors = colors + myHexDecimal[Math.floor(Math.random()*16)];
+        }
+        return colors;
+}
+    const handleButton1 = () => {
+        
+         rgb1= hexvalue();
+        console.log(rgb1);
+        btn1.innerHTML=rgb1;
+        document.body.style.backgroundImage = `linear-gradient(to right , ${rgb1} ,${rgb2})`;
+        copyDiv.innerHTML =  `background-image:linear-gradient(to right,${rgb1},${rgb2})`;
+    };
+    
+    const handleButton2 = () => {
+        rgb2= hexvalue();
+        console.log(rgb2);
+        btn2.innerHTML=rgb2;
+         document.body.style.backgroundImage = `linear-gradient(to right , ${rgb1} ,${rgb2})`;
+        copyDiv.innerHTML =  `background-image:linear-gradient(to right,${rgb1},${rgb2})`
+    };
+    
+
+    btn1.addEventListener("click",handleButton1);
+    btn2.addEventListener("click",handleButton2);
+    copyDiv.addEventListener("click",()=>{
+        navigator.clipboard.writeText(copyDiv.innerText);
+    });
+</script>
+</body>
+</html>
